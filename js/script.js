@@ -97,10 +97,66 @@ function initGallery() {
     });
   });
 }
+function initContactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+
+  const status = document.getElementById("formStatus");
+
+  const rules = {
+    name: (v) => v.trim().length >= 2 || "Enter your full name.",
+    email: (v) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || "Enter a valid email address.",
+    subject: (v) => v.trim().length >= 3 || "Subject is too short.",
+    message: (v) => v.trim().length >= 10 || "Message should be at least 10 characters.",
+  };
+
+  function validateField(field) {
+    const input = form.querySelector(`[name="${field}"]`);
+    const wrapper = input.closest(".field");
+    const errorBox = wrapper.querySelector(".error");
+    const result = rules[field](input.value);
+
+    if (result === true) {
+      wrapper.classList.remove("invalid");
+      errorBox.textContent = "";
+      return true;
+    } else {
+      wrapper.classList.add("invalid");
+      errorBox.textContent = result;
+      return false;
+    }
+  }
+
+  Object.keys(rules).forEach((field) => {
+    const input = form.querySelector(`[name="${field}"]`);
+    input.addEventListener("blur", () => validateField(field));
+    input.addEventListener("input", () => {
+      if (input.closest(".field").classList.contains("invalid")) {
+        validateField(field);
+      }
+    });
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const allValid = Object.keys(rules).map(validateField).every(Boolean);
+
+    if (allValid) {
+      status.textContent = "Thanks , your message looks good. (Static demo: no server is connected yet.)";
+      status.classList.add("show");
+      form.reset();
+    } else {
+      status.textContent = "Please fix the highlighted fields.";
+      status.classList.add("show");
+    }
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initCarousel();
   initAccordion();
   initGallery();
+  initContactForm();
 });

@@ -25,10 +25,52 @@
   </header>
 
   <main>
-    <section class="hero container" style="grid-template-columns:1fr;">
+    <section class="hero container" style="grid-template-columns:1fr; padding-bottom:40px;">
       <div>
-        <h1>Contact</h1>
-        <p class="lede">Content for this page is coming in a later commit.</p>
+        <h1>Let's talk</h1>
+        <p class="lede">
+          Reach out about collaboration, contests, or anything CS-related. The form
+          below validates as you type , try leaving a field empty.
+        </p>
+      </div>
+    </section>
+
+    <section class="block container">
+      <div class="contact-grid">
+        <div>
+          <form id="contactForm" novalidate>
+            <div class="field">
+              <label for="name">Full name</label>
+              <input type="text" id="name" name="name" placeholder="Your name">
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input type="text" id="email" name="email" placeholder="you@example.com">
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="What's this about?">
+              <div class="error"></div>
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Write your message"></textarea>
+              <div class="error"></div>
+            </div>
+            <button type="submit" class="btn">Send message</button>
+            <div id="formStatus"></div>
+          </form>
+        </div>
+
+        <div>
+          <div class="info-line"><span>Location</span><span>Shahdara, Lahore</span></div>
+          <div class="info-line"><span>Institute</span><span>PUCIT</span></div>
+          <div class="info-line"><span>Roll No.</span><span>BCSF24M042</span></div>
+          <div class="info-line"><span>Availability</span><span>Open to contests &amp; collabs</span></div>
+          <div class="map-box">Map placeholder , Shahdara, Lahore</div>
+        </div>
       </div>
     </section>
   </main>
