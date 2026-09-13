@@ -85,18 +85,6 @@ function initAccordion() {
   items[0].querySelector(".accordion-panel").style.maxHeight =
     items[0].querySelector(".accordion-panel").scrollHeight + "px";
 }
-function initGallery() {
-  const items = document.querySelectorAll(".frame");
-  if (!items.length) return;
-
-  items.forEach((item) => {
-    item.addEventListener("click", () => {
-      items.forEach((i) => i.style.outline = "none");
-      item.style.outline = "2px solid #a63d2f";
-      item.style.outlineOffset = "-2px";
-    });
-  });
-}
 function initContactForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;
@@ -157,6 +145,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initCarousel();
   initAccordion();
-  initGallery();
   initContactForm();
 });
