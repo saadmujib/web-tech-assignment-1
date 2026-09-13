@@ -15,8 +15,6 @@ function initNav() {
     });
   });
 }
-
-
 function initCarousel() {
   const track = document.querySelector(".carousel-track");
   if (!track) return;
@@ -60,8 +58,6 @@ function initCarousel() {
   update();
   resetTimer();
 }
-
-
 function initAccordion() {
   const items = document.querySelectorAll(".accordion-item");
   if (!items.length) return;
@@ -89,9 +85,22 @@ function initAccordion() {
   items[0].querySelector(".accordion-panel").style.maxHeight =
     items[0].querySelector(".accordion-panel").scrollHeight + "px";
 }
+function initGallery() {
+  const items = document.querySelectorAll(".frame");
+  if (!items.length) return;
+
+  items.forEach((item) => {
+    item.addEventListener("click", () => {
+      items.forEach((i) => i.style.outline = "none");
+      item.style.outline = "2px solid #a63d2f";
+      item.style.outlineOffset = "-2px";
+    });
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initCarousel();
   initAccordion();
+  initGallery();
 });
