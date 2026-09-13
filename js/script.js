@@ -21,9 +21,8 @@ function initCarousel() {
 
   const slides = Array.from(track.children);
   const dotsWrap = document.querySelector(".carousel-nav");
-  const prevBtn = document.querySelector(".carousel-arrow.prev");
-  const nextBtn = document.querySelector(".carousel-arrow.next");
   let index = 0;
+  let direction = 1;
   let timer = null;
 
   slides.forEach((_, i) => {
@@ -49,11 +48,12 @@ function initCarousel() {
 
   function resetTimer() {
     clearInterval(timer);
-    timer = setInterval(() => goTo(index + 1), 5000);
+    timer = setInterval(() => {
+      if (index === slides.length - 1) direction = -1;
+      if (index === 0) direction = 1;
+      goTo(index + direction);
+    }, 5000);
   }
-
-  if (prevBtn) prevBtn.addEventListener("click", () => goTo(index - 1));
-  if (nextBtn) nextBtn.addEventListener("click", () => goTo(index + 1));
 
   update();
   resetTimer();

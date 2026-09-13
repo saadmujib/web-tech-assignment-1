@@ -166,13 +166,10 @@ section.block:last-of-type { border-bottom: none; }
 .carousel { position: relative; overflow: hidden; border: 1px solid var(--ink); background: var(--paper2); }
 .carousel-track { display: flex; transition: transform 0.4s ease; }
 .carousel-slide { min-width: 100%; padding: 34px; display: grid; grid-template-columns: 90px 1fr; gap: 24px; align-items: center; }
-.carousel-swatch { width: 90px; height: 90px; border: 1px solid var(--ink); }
+.carousel-swatch { width: 90px; height: 90px; border: 1px solid var(--ink); object-fit: cover; }
 .carousel-nav { display: flex; justify-content: center; gap: 8px; padding: 14px 0; border-top: 1px solid var(--rule); }
 .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); border: none; cursor: pointer; padding: 0; }
 .dot.active { background: var(--rust); }
-.carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: var(--paper); border: 1px solid var(--ink); color: var(--ink); width: 32px; height: 32px; cursor: pointer; font-family: var(--mono); }
-.carousel-arrow.prev { left: 10px; }
-.carousel-arrow.next { right: 10px; }
 
 .ledger { border-top: 1px solid var(--ink); }
 .ledger-row {
@@ -227,7 +224,7 @@ section.block:last-of-type { border-bottom: none; }
   pointer-events: none;
 }
 
-.frame .swatchfill { position: absolute; inset: 6px; opacity: 0.85; }
+.frame .swatchfill { position: absolute; inset: 6px; width: calc(100% - 12px); height: calc(100% - 12px); object-fit: cover; opacity: 0.85; }
 .frame .cap { position: relative; font-family: var(--mono); font-size: 0.72rem; color: var(--ink); background: var(--paper); padding: 3px 6px; align-self: flex-start; border: 1px solid var(--ink); }
 
 .accordion-item { border-bottom: 1px solid var(--rule); }
