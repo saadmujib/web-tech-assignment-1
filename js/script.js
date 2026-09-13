@@ -16,6 +16,7 @@ function initNav() {
   });
 }
 
+
 function initCarousel() {
   const track = document.querySelector(".carousel-track");
   if (!track) return;
@@ -60,7 +61,37 @@ function initCarousel() {
   resetTimer();
 }
 
+
+function initAccordion() {
+  const items = document.querySelectorAll(".accordion-item");
+  if (!items.length) return;
+
+  items.forEach((item) => {
+    const trigger = item.querySelector(".accordion-trigger");
+    const panel = item.querySelector(".accordion-panel");
+
+    trigger.addEventListener("click", () => {
+      const isOpen = item.classList.contains("open");
+
+      items.forEach((other) => {
+        other.classList.remove("open");
+        other.querySelector(".accordion-panel").style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        item.classList.add("open");
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
+    });
+  });
+
+  items[0].classList.add("open");
+  items[0].querySelector(".accordion-panel").style.maxHeight =
+    items[0].querySelector(".accordion-panel").scrollHeight + "px";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   initNav();
   initCarousel();
+  initAccordion();
 });
